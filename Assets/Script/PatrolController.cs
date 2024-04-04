@@ -7,7 +7,7 @@ using UnityEngine;
 public class PatrolController : MonoBehaviour
 {
     [SerializeField]
-    float speed;
+    public float speed;
 
     [SerializeField]
     bool isFacingRight;
