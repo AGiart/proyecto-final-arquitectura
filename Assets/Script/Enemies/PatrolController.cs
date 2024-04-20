@@ -45,7 +45,7 @@ public class PatrolController : MonoBehaviour
             FlipX();
 
         }
-        _rigidbody.velocity = new Vector2(speed * Time.deltaTime, _rigidbody.velocity.y); ;
+        _rigidbody.velocity = new Vector2(speed * Time.deltaTime, _rigidbody.velocity.y); 
     }
 
     private void FlipX()
