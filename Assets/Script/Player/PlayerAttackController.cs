@@ -29,7 +29,6 @@ public class PlayerAttackController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Time.time >= nextAttackTime)
         {
-
             Attack();
             nextAttackTime = Time.time + 1f / attackRate;
         }
@@ -39,6 +38,8 @@ public class PlayerAttackController : MonoBehaviour
     void Attack()
     {
         
+        animator.SetTrigger("attack");
+
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
