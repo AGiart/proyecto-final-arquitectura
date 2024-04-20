@@ -36,6 +36,8 @@ public class PlayerController2D : MonoBehaviour
     bool _isJumpPressed;
     bool _isGrounded;
 
+    [SerializeField]
+    private PlayerAttackController _Acontroller;
 
 
     private void Awake()
@@ -64,7 +66,12 @@ public class PlayerController2D : MonoBehaviour
     {
         Jump();
         Rotate();
-        Move();
+        
+        if (_Acontroller.canMove)
+        {
+            Move();
+        }
+        
     }
 
     private void OnDrawGizmos()
