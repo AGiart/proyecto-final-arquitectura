@@ -24,20 +24,31 @@ public class DistanceAttackController : MonoBehaviour
     float distanceToTarget;
 
     [SerializeField]
-    float attackRange = 1.0F;
+    float attackRange;
 
     [SerializeField]
-    float attackRate = 1;
+    float attackRate;
 
     private bool playerAlive = true;
 
     [SerializeField]
     private PlayerHealthController _playerHealth;
+    [SerializeField]
+    private PatrolController _patrol;
+
+    private float oldSpeed;
 
     private float _nextAttackTime;
 
+
     private void FixedUpdate()
     {
+        if (_patrol.speed != 0)
+        {
+            oldSpeed = _patrol.speed;
+        }
+
+
         if (_playerHealth.currentHealth <= 0)
         {
             playerAlive = false;
@@ -45,21 +56,29 @@ public class DistanceAttackController : MonoBehaviour
         float distance = Vector2.Distance(transform.position, target.position);
         if (distance <= distanceToTarget)
         {
-           if (playerAlive)
+            animator.SetBool("Walk", false);
+            _patrol.speed = 0.0f;
+            if (playerAlive)
             {
                 if (Time.time >= _nextAttackTime)
                 {
-                    animator.SetTrigger("attack");
+                    animator.SetTrigger("Attack");
                     Attack(); // Llamar al método Attack para hacer daño al jugador
                     _nextAttackTime = Time.time + attackRange / attackRate;
                 }
             }
         }
+        else
+        {
+            animator.SetBool("Walk", true);
+            _patrol.speed = oldSpeed;
+        }
     }
 
     void Attack()
     {
-        animator.SetTrigger("attack");
+        
+        animator.SetTrigger("Attack");
 
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
         
@@ -68,5 +87,6 @@ public class DistanceAttackController : MonoBehaviour
             // Aplicar daño al jugador
             player.GetComponent<PlayerHealthController>().TakeDamage(damagePerHit);
         }
+        
     }
 }

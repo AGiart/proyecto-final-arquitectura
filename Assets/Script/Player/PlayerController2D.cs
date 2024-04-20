@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -24,6 +25,12 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField]
     bool isFacingRight = true;
 
+    [SerializeField]
+    float distanciaDash;
+
+    [SerializeField]
+    float tiempoDash;
+
     Rigidbody2D _rigidbody;
 
     Animator _animator;
@@ -31,13 +38,14 @@ public class PlayerController2D : MonoBehaviour
     float _inputX;
     float _velocityY;
     float _gravityY;
+    float gravedadInicial;
+    float oldSpeed;
 
     bool _isJumping;
     bool _isJumpPressed;
     bool _isGrounded;
+    bool canMove = true;
 
-    [SerializeField]
-    private PlayerAttackController _Acontroller;
 
 
     private void Awake()
@@ -49,29 +57,39 @@ public class PlayerController2D : MonoBehaviour
 
     private void Start()
     {
+        oldSpeed = walkSpeed;
         _isGrounded = IsGrounded();
         if (!_isGrounded)
         {
             StartCoroutine(WaitForGroundedCoroutine());
         }
+        gravedadInicial = _rigidbody.gravityScale;
     }
 
     private void Update()
     {
         HandleGravity();
-        HandleMovement();
+        if (canMove)
+        {
+            HandleMovement();
+        }
+        
     }
 
     private void FixedUpdate()
     {
         Jump();
         Rotate();
-        
-        if (_Acontroller.canMove)
+        if (!canMove)
         {
-            Move();
+            walkSpeed = 0;
+        }else if (canMove)
+        {
+            walkSpeed = oldSpeed;
         }
-        
+        Move();
+
+
     }
 
     private void OnDrawGizmos()
@@ -96,7 +114,9 @@ public class PlayerController2D : MonoBehaviour
         if (facingRight != isFacingRight)
         {
             isFacingRight = facingRight;
-            transform.Rotate(0.0F, 180.0F, 0.0F);
+            Vector3 escala = transform.localScale;
+            escala.x *= -1;
+            transform.localScale = escala;
         }
     }
 
@@ -107,7 +127,7 @@ public class PlayerController2D : MonoBehaviour
         {
             _animator.SetFloat("speed", speed);
         }
-
+        
         Vector2 velocity = new Vector2(_inputX, 0.0F) * walkSpeed * Time.fixedDeltaTime;
         velocity.y = _velocityY;
 
@@ -207,4 +227,5 @@ public class PlayerController2D : MonoBehaviour
 
         // Reiniciar la escena
     }
+
 }

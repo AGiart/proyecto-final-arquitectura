@@ -46,7 +46,7 @@ public class EnemyAttackController : MonoBehaviour
     {
         if (playerAlive)
         {
-            animator.SetTrigger("attack");
+            animator.SetTrigger("Attack");
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 

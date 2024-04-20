@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnemyHealthController : MonoBehaviour
 {
-    public int maxHealth = 20; // Vida máxima del enemigo
+    [SerializeField]
+    public int maxHealth; // Vida máxima del enemigo
     private int currentHealth; // Vida actual del enemigo
 
     public Animator animator;
@@ -24,7 +25,7 @@ public class EnemyHealthController : MonoBehaviour
 
     void Die()
     {
-        animator.SetTrigger("dead");
+        animator.SetTrigger("Dead");
         Destroy(gameObject,2F); // Destruye al enemigo
     }
 }

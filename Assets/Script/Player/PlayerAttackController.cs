@@ -21,24 +21,27 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField]
     int damagePerHit = 10; // Daño por golpe
 
+    
     private float nextAttackTime = 0f;
 
-    public bool canMove = true;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && Time.time >= nextAttackTime)
         {
+
             Attack();
             nextAttackTime = Time.time + 1f / attackRate;
         }
-        
+
+
     }
 
     void Attack()
     {
-        
+
         animator.SetTrigger("attack");
+
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
@@ -57,5 +60,6 @@ public class PlayerAttackController : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
 
 }
