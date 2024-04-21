@@ -28,7 +28,7 @@ public class PlayerHealthController : MonoBehaviour
 
     }
 
-    private void Die()
+    public void Die()
     {
         animator.SetTrigger("dead");
         StartCoroutine(DisableMovement()); // Deshabilita el movimiento del jugador
