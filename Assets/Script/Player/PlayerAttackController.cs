@@ -13,6 +13,9 @@ public class PlayerAttackController : MonoBehaviour
     LayerMask enemyLayer;
 
     [SerializeField]
+    LayerMask bossLayer;
+
+    [SerializeField]
     float attackRange = 0.5f;
 
     [SerializeField]
@@ -39,18 +42,30 @@ public class PlayerAttackController : MonoBehaviour
 
     void Attack()
     {
-
         animator.SetTrigger("attack");
-
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            // Aplicar daño al enemigo
-            enemy.GetComponent<EnemyHealthController>().TakeDamage(damagePerHit);
+            if (enemy.gameObject.CompareTag("Boss")) // Verifica si es el jefe final
+            {
+                FinalBoss boss = enemy.GetComponent<FinalBoss>();
+                if (boss != null) 
+                {
+                    // Aplicar daño al jefe final
+                    boss.TakeDamage(damagePerHit);
+                }
+            }
+            else // Si no es el jefe final, aplica daño a los enemigos normales
+            {
+                EnemyHealthController enemyHealth = enemy.GetComponent<EnemyHealthController>();
+                if (enemyHealth != null) // Verifica que el componente EnemyHealthController exista en el enemigo
+                {
+                    enemyHealth.TakeDamage(damagePerHit);
+                }
+            }
         }
-        
     }
 
     void OnDrawGizmosSelected()
