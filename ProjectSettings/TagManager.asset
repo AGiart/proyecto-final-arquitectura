@@ -7,6 +7,8 @@ TagManager:
   - player
   - Enemy
   - Boss
+  - cambio
+  - atras
   layers:
   - Default
   - TransparentFX
