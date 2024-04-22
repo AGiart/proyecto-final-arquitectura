@@ -48,6 +48,7 @@ public class PlayerAttackController : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            Debug.Log(enemy.gameObject.tag);
             if (enemy.gameObject.CompareTag("Boss")) // Verifica si es el jefe final
             {
                 Debug.Log("golpenado jefe");

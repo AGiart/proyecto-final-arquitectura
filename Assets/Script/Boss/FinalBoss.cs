@@ -93,6 +93,7 @@ public class FinalBoss : MonoBehaviour
         if (healthGolem <= 0)
         {
             animator.SetTrigger("Dead");
+            DeadGolem();
         }
     }
 

@@ -6,10 +6,6 @@ public class HealthBarGolem : MonoBehaviour
 {
     private Slider slider;
 
-    private void Start()
-    {
-        slider = GetComponent<Slider>();
-    }
 
     public void ChangeMaxHealth(float MaxHealth)
     {
@@ -23,6 +19,7 @@ public class HealthBarGolem : MonoBehaviour
 
     public void StartHealthBar(float AmountHealth)
     {
+        slider = GetComponent<Slider>();
         ChangeCurrentHealth(AmountHealth);
         ChangeCurrentHealth(AmountHealth);
     }
