@@ -50,6 +50,7 @@ public class PlayerAttackController : MonoBehaviour
         {
             if (enemy.gameObject.CompareTag("Boss")) // Verifica si es el jefe final
             {
+                Debug.Log("golpenado jefe");
                 FinalBoss boss = enemy.GetComponent<FinalBoss>();
                 if (boss != null) 
                 {

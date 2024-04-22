@@ -1826,7 +1826,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421340340}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2168,7 +2168,7 @@ GameObject:
   - component: {fileID: 540462845}
   m_Layer: 8
   m_Name: Golem
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2203,14 +2203,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNinja: {fileID: 398243066}
-  moveSpeed: 3
+  moveSpeed: 5
   healthGolem: 100
   healthBarGolem: {fileID: 684830675}
   Attack: {fileID: 2073459135}
   radioAtaque: 1
   danoAtaque: 20
   detectionRange: 5
-  HealthBarGolem: {fileID: 0}
+  HealthBarGolem: {fileID: 1602631544}
 --- !u!70 &540462846
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
