@@ -35,6 +35,7 @@ public class FinalBoss : MonoBehaviour
 
     public GameObject HealthBarGolem;
 
+    private GameObject bar;
 
 
     private void Start()
@@ -60,7 +61,7 @@ public class FinalBoss : MonoBehaviour
             //y se podría poner un efecto de sonido por iniciar la batalla con el jefe
 
             //HealthBarGolem.gameObject.SetActive(true);
-
+            GameObject.FindGameObjectWithTag("HealthBar").SetActive(GetComponent<Canvas>());
             LookPlayer();
             MoveTowardsPlayer();
         }

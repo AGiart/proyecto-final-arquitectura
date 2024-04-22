@@ -22,7 +22,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: b32667b0901902941baa4ce6c79ac2db, type: 2}
-  m_Tag: 
+  m_Tag: Boss
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -41,7 +41,6 @@ AnimatorState:
   - {fileID: 3341968628966908711}
   - {fileID: 868910324089738593}
   m_StateMachineBehaviours:
-  - {fileID: 5036347088594677171}
   - {fileID: 5326983421433183373}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -52,7 +51,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 47f64a36afd3df743b12b31955cafcde, type: 2}
-  m_Tag: 
+  m_Tag: Boss
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 

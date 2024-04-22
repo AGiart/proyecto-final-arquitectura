@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - cambio
   - atras
+  - HealthBar
   layers:
   - Default
   - TransparentFX
