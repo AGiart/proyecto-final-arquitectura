@@ -41,13 +41,15 @@ public class DistanceAttackController : MonoBehaviour
     private float _nextAttackTime;
 
 
+
+
     private void FixedUpdate()
     {
         if (_patrol.speed != 0)
         {
             oldSpeed = _patrol.speed;
         }
-
+       
 
         if (_playerHealth.currentHealth <= 0)
         {
