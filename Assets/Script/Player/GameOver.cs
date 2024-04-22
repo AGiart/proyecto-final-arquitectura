@@ -10,6 +10,11 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void Home(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
     public void Close()
     {
         UnityEditor.EditorApplication.isPlaying = false;
